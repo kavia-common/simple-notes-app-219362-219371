@@ -1,0 +1,215 @@
+/* Ocean Professional Theme Variables */
+:root {
+  --op-primary: #2563EB; /* blue-600 */
+  --op-secondary: #F59E0B; /* amber-500 */
+  --op-error: #EF4444; /* red-500 */
+
+  --op-bg: #f9fafb;
+  --op-surface: #ffffff;
+  --op-text: #111827;
+
+  --op-muted: #6B7280;
+  --op-border: #E5E7EB;
+
+  --op-shadow: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.06);
+
+  --radius-md: 12px;
+  --radius-sm: 8px;
+
+  --gradient-bg: linear-gradient(135deg, rgba(37,99,235,0.08), rgba(249,250,251,0.9));
+}
+
+/* Global Base */
+html, body, #root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--op-text);
+  background: var(--gradient-bg);
+}
+
+/* Layout */
+.app-shell {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 16px;
+  height: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.header {
+  grid-column: 1 / -1;
+  background: var(--op-surface);
+  border: 1px solid var(--op-border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--op-shadow);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: var(--op-primary);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Sidebar */
+.sidebar {
+  background: var(--op-surface);
+  border: 1px solid var(--op-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--op-shadow);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0; /* allow flex child to scroll */
+}
+
+.search {
+  display: flex;
+  gap: 8px;
+}
+
+.input {
+  flex: 1;
+  border: 1px solid var(--op-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  background: #fff;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+.input:focus {
+  outline: none;
+  border-color: var(--op-primary);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+}
+
+.btn {
+  border: 1px solid var(--op-border);
+  background: #fff;
+  color: var(--op-text);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: transform .1s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--op-shadow);
+}
+.btn.primary {
+  background: var(--op-primary);
+  color: #fff;
+  border-color: transparent;
+}
+.btn.danger {
+  background: var(--op-error);
+  color: #fff;
+  border-color: transparent;
+}
+.btn.secondary {
+  background: var(--op-secondary);
+  color: #111827;
+  border-color: transparent;
+}
+
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow: auto;
+  min-height: 0; /* scroll container */
+}
+
+.note-list-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid var(--op-border);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  cursor: pointer;
+  transition: background .2s ease, border-color .2s ease, transform .1s ease;
+}
+.note-list-item:hover {
+  background: rgba(37,99,235,0.06);
+}
+.note-list-item.active {
+  border-color: var(--op-primary);
+  background: rgba(37,99,235,0.1);
+}
+.note-title {
+  font-weight: 600;
+}
+.note-updated {
+  color: var(--op-muted);
+  font-size: 12px;
+}
+
+/* Editor */
+.editor {
+  background: var(--op-surface);
+  border: 1px solid var(--op-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--op-shadow);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0; /* allow contents to define scroll */
+}
+
+.editor-title {
+  border: none;
+  border-bottom: 1px solid var(--op-border);
+  font-size: 20px;
+  font-weight: 700;
+  padding: 8px 4px;
+  outline: none;
+}
+.editor-body {
+  flex: 1;
+  resize: none;
+  border: 1px solid var(--op-border);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  line-height: 1.5;
+  outline: none;
+  min-height: 240px;
+}
+.editor-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+  }
+  .sidebar {
+    order: 2;
+  }
+  .editor {
+    order: 3;
+  }
+}
